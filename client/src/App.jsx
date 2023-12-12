@@ -3,6 +3,7 @@ import Login from "./components/Login"
 import Signup from "./components/Signup"
 import ForgotPassword from "./components/ForgotPassword"
 import { Toaster } from "react-hot-toast"
+import ResetPassword from "./components/ResetPassword"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
         </Routes>
       </BrowserRouter>
     </>
