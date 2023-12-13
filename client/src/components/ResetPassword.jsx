@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import toast from "react-hot-toast"
 
 const ResetPassword = () => {
@@ -25,7 +25,7 @@ const ResetPassword = () => {
       : ""
   console.log(active, password)
 
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
   return (
     <div className="container">
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -87,10 +87,18 @@ const ResetPassword = () => {
             type="submit"
             className={`btn ${active}`}
             onClick={() => {
-              if (password !== "") {
-                navigate("/reset-password")
+              if (password !== confirm_password) {
+                toast.error("Password did not match")
+              } else if (password.length < 6) {
+                toast.error("Password must be atleast 6 characters long")
+              } else if (
+                password === confirm_password &&
+                activation_code !== ""
+              ) {
+                toast.success("Password changed successfully")
+                //navigate("/login")
               } else {
-                toast.error("Please Enter Email")
+                toast.error("Please fill all the fields")
               }
             }}
           >
