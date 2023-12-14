@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 const Login = () => {
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -20,23 +21,23 @@ const Login = () => {
       return "Password is required"
     }
 
-    /*   const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/
-    const startsWithCapital = /^[A-Z]/
-
-    if (!specialCharRegex.test(value)) {
-      return "Password must contain at least one special character"
-    }
-
-    if (!startsWithCapital.test(value)) {
-      return "Password must start with a capital letter"
-    } */
-
     if (value.length < 6) {
       return "Password must be at least 6 characters"
     }
 
     return true
   }
+
+  const email = watch("email")
+  const password = watch("password")
+
+  const active =
+    email !== undefined &&
+    email !== "" &&
+    password !== undefined &&
+    password !== ""
+      ? "active"
+      : ""
 
   return (
     <div className="container">
@@ -75,7 +76,7 @@ const Login = () => {
             </Link>
           </div>
 
-          <button type="submit" className="btn">
+          <button type="submit" className={`btn ${active}`}>
             Login
           </button>
 

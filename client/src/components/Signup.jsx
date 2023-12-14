@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 const Signup = () => {
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -37,6 +38,14 @@ const Signup = () => {
 
     return true
   }
+
+  const allValues = watch()
+
+  const active = Object.values(allValues).every(
+    (value) => value !== undefined && value !== ""
+  )
+    ? "active"
+    : ""
 
   return (
     <div className="container">
@@ -115,7 +124,7 @@ const Signup = () => {
             <span className="input-border"></span>
           </div>
 
-          <button type="submit" className="btn">
+          <button type="submit" className={`btn ${active}`}>
             Create
           </button>
 

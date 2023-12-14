@@ -19,13 +19,20 @@ const ResetPassword = () => {
   const password = watch("create_password")
   const confirm_password = watch("confirm_password")
   const activation_code = watch("activation_code")
-  const active =
-    password !== "" && confirm_password !== "" && activation_code !== ""
+  const allValues = watch()
+
+  let active = false
+
+  if (Object.keys(allValues).length === 0) {
+    active = ""
+  } else {
+    active = Object.values(allValues).every(
+      (value) => value !== undefined && value !== ""
+    )
       ? "active"
       : ""
-  console.log(active, password)
+  }
 
-  //const navigate = useNavigate()
   return (
     <div className="container">
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
