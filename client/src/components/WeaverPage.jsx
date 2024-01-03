@@ -159,6 +159,68 @@ const WeaverPage = () => {
             </div>
           </div>
         </div>
+        <div className="device-card">
+          <img src="https://picsum.photos/350/200" alt="device" />
+          <div className="device-info">
+            <div>
+              <h4>Device name</h4>
+              <div>
+                <button>
+                  <RiDeleteBin6Line />
+                </button>
+                <button>
+                  <FiEdit2 />
+                </button>
+              </div>
+            </div>
+            <p className="status">• Inactive</p>
+            <div>
+              <p className="location">Location</p>
+              <div>
+                <button>
+                  <GoBell />
+                </button>
+                <div className="cl-toggle-switch">
+                  <label className="cl-switch">
+                    <input type="checkbox" />
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="device-card">
+          <img src="https://picsum.photos/350/200" alt="device" />
+          <div className="device-info">
+            <div>
+              <h4>Device name</h4>
+              <div>
+                <button>
+                  <RiDeleteBin6Line />
+                </button>
+                <button>
+                  <FiEdit2 />
+                </button>
+              </div>
+            </div>
+            <p className="status">• Inactive</p>
+            <div>
+              <p className="location">Location</p>
+              <div>
+                <button>
+                  <GoBell />
+                </button>
+                <div className="cl-toggle-switch">
+                  <label className="cl-switch">
+                    <input type="checkbox" />
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
