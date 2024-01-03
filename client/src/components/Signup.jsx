@@ -1,19 +1,50 @@
 import { useForm } from "react-hook-form"
 import "../styles.css"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+/* import { toast } from "react-hot-toast"
+ import { signUp } from "../integration/authentication_apies"  */
+ 
+const SignUp = () => {
+  const navigate = useNavigate()
 
-const Signup = () => {
   const {
     register,
-    watch,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     mode: "onTouched",
   })
 
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data))
+  const onSubmit = async (data) => {
+    try {
+      console.log(data)
+
+      if(data.dropdown === "weaver") {
+        navigate("/weaver")
+      } else {
+        navigate("/customer")
+      }
+
+      /* const requstBodyData = {
+        first_name: data.first_name,
+        last_name: data.last_name,
+        email: data.email,
+        password: data.password,
+        phone_number: data.phone_number,
+        address: data.address || "",
+        role: data.dropdown,
+      }
+      const response = await signUp(requstBodyData)
+      if (response.data.status_code === 201) {
+        toast.success(response.data.message)
+        navigate("/")
+      } else {
+        toast.error(response.data.message)
+      } */
+    } catch (error) {
+      //setLoginError('Login failed. Please try again.');
+      console.error("Error:", error)
+    }
   }
 
   const validatePassword = (value) => {
@@ -38,14 +69,13 @@ const Signup = () => {
 
     return true
   }
+  // const allValues = watch()
 
-  const allValues = watch()
-
-  const active = Object.values(allValues).every(
-    (value) => value !== undefined && value !== ""
-  )
-    ? "active"
-    : ""
+  // const active = Object.values(allValues).every(
+  //   (value) => value !== undefined && value !== ""
+  // )
+  //   ? "active"
+  //   : ""
 
   return (
     <div className="container">
@@ -56,7 +86,7 @@ const Signup = () => {
             <input
               type="text"
               className="input"
-              placeholder="* First Name"
+              placeholder="First Name*"
               {...register("first_name", { required: true })}
             />
             <span className="input-border"></span>
@@ -68,7 +98,7 @@ const Signup = () => {
             <input
               type="text"
               className="input"
-              placeholder="* Last Name"
+              placeholder="Last Name*"
               {...register("last_name", { required: true })}
             />
             <span className="input-border"></span>
@@ -80,13 +110,19 @@ const Signup = () => {
             <input
               type="email"
               className="input"
-              placeholder="* Email"
-              {...register("email", { required: true })}
+              placeholder="Email*"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /\S+@\S+\.\S+/,
+                  message: "Please enter a valid email address",
+                },
+              })}
             />
             <span className="input-border"></span>
           </div>
           {errors.email && (
-            <span className="error-msg">*Email is required</span>
+            <span className="error-msg">{errors.email.message}</span>
           )}
           <div className="input-field">
             <input
@@ -102,11 +138,25 @@ const Signup = () => {
           {errors.password && (
             <span className="error-msg">*{errors.password.message}</span>
           )}
+
+          <div className="input-field">
+            <select
+              {...register("dropdown", { required: true })}
+              className="input"
+              placeholder="role*"
+            >
+              <option value="weaver">weaver</option>
+              <option value="customer">customer</option>
+            </select>
+            {errors.dropdown && (
+              <span className="error-msg">* Please select an option</span>
+            )}
+          </div>
           <div className="input-field">
             <input
               type="text"
               className="input"
-              placeholder="* Phone no."
+              placeholder="Phone no.*"
               {...register("phone_number", { required: true })}
             />
             <span className="input-border"></span>
@@ -123,14 +173,17 @@ const Signup = () => {
             />
             <span className="input-border"></span>
           </div>
-
-          <button type="submit" className={`btn ${active}`}>
-            Create
+          <button
+            type="submit"
+            className={`btn ${isValid ? "active" : ""}`}
+            disabled={!isValid}
+          >
+            Create Account
           </button>
 
           <div className="signup-link">
             <span>Already have an account? </span>
-            <Link to="/login" className="link">
+            <Link to="/" className="link">
               Login
             </Link>
           </div>
@@ -140,4 +193,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default SignUp

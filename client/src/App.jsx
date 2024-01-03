@@ -4,6 +4,7 @@ import Signup from "./components/Signup"
 import ForgotPassword from "./components/ForgotPassword"
 import { Toaster } from "react-hot-toast"
 import ResetPassword from "./components/ResetPassword"
+import WeaverPage from "./components/WeaverPage"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/weaver" element={<WeaverPage />} />
         </Routes>
       </BrowserRouter>
     </>
