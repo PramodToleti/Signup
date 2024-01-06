@@ -448,3 +448,89 @@ input:focus ~ .input-border {
 .cl-switch > input:checked:disabled + span::after {
   background-color: #8a85b8;
 }
+
+.add-device-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.add-device-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 8px;
+  min-height: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.add-device-form  > h1 {
+  margin-bottom:  20px;
+}
+
+.add-device-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.add-device-input-container label {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.add-device-input {
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.add-device-btn {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #2eaf55;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  height: 40px;
+  width: 100px;
+  align-self: flex-start;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 500px;
+  max-width: 550px;
+}
+
+.popup-content {
+  background: transparent !important;
+  border: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

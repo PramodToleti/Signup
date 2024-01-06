@@ -4,8 +4,11 @@ import { FaCirclePlus } from "react-icons/fa6"
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { FiEdit2 } from "react-icons/fi"
 import { GoBell } from "react-icons/go"
+import Popup from "reactjs-popup"
 
 import "../styles.css"
+import "reactjs-popup/dist/index.css"
+import AddDevice from "./AddDevice"
 
 const WeaverPage = () => {
   return (
@@ -27,10 +30,27 @@ const WeaverPage = () => {
               placeholder="Search"
             />
           </div>
-          <button>
-            <FaCirclePlus className="plus-icon" />
-            Add Device
-          </button>
+          <Popup
+            trigger={
+              <button>
+                <FaCirclePlus className="plus-icon" />
+                Add Device{" "}
+              </button>
+            }
+            modal
+            nested
+          >
+            {() => (
+              <div className="modal">
+                <AddDevice />
+                <div>
+                 {/*  <button onClick={() => close()} className="close-btn">
+                    Close{" "}
+                  </button> */}
+                </div>
+              </div>
+            )}
+          </Popup>
         </div>
       </nav>
       <h3 className="active-heading">Active Devices (25)</h3>
