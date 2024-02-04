@@ -20,9 +20,9 @@ const SignUp = () => {
       console.log(data)
 
       if(data.dropdown === "weaver") {
-        navigate("/weaver")
+        navigate("/weaverHome")
       } else {
-        navigate("/customer")
+        navigate("/customerHome")
       }
 
       /* const requstBodyData = {

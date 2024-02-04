@@ -1,19 +1,15 @@
 import { FaServer } from "react-icons/fa6";
 import { IoIosSearch } from "react-icons/io";
-import { FaCirclePlus } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FiEdit2 } from "react-icons/fi";
 import { GoBell } from "react-icons/go";
-import { IoMdClose } from "react-icons/io";
-import Popup from "reactjs-popup";
-import { toast } from "react-hot-toast";
 
 import "../styles.css";
 import "reactjs-popup/dist/index.css";
-import AddDevice from "./AddDevice";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
-const WeaverPage = () => {
+const CustomerPage = () => {
   const [devices, setDevices] = useState([
     {
       image: "https://picsum.photos/350/200",
@@ -153,7 +149,6 @@ const WeaverPage = () => {
       }
     );
   };
-
   const handleDeviceDelete = (index) => {
     const newDevices = devices.filter((device, i) => i !== index);
     setDevices(newDevices);
@@ -180,28 +175,6 @@ const WeaverPage = () => {
               onChange={(e) => handleSearch(e.target.value)}
             />
           </div>
-          <Popup
-            trigger={
-              <button>
-                <FaCirclePlus className='plus-icon' />
-                Add Device{" "}
-              </button>
-            }
-            closeOnDocumentClick
-            modal
-            nested
-          >
-            {(close) => (
-              <div className='modal'>
-                <AddDevice />
-                <div className='close-btn'>
-                  <button onClick={close}>
-                    <IoMdClose size={25} />{" "}
-                  </button>
-                </div>
-              </div>
-            )}
-          </Popup>
         </div>
       </nav>
       <h3 className='active-heading'>Active Devices (25)</h3>
@@ -246,4 +219,4 @@ const WeaverPage = () => {
   );
 };
 
-export default WeaverPage;
+export default CustomerPage;
