@@ -494,7 +494,7 @@ input:focus ~ .input-border {
   outline: none;
 }
 
-.add-device-btn {
+.add-device-btn, .close-device-btn {
   padding: 10px;
   border-radius: 8px;
   border: none;
@@ -507,6 +507,16 @@ input:focus ~ .input-border {
   height: 40px;
   width: 100px;
   align-self: flex-start;
+}
+
+.close-device-btn {
+  background-color: #e53e3e;
+}
+
+.btns-container {
+  display: flex;
+  width: 100%;
+  gap: 10px;
 }
 
 .error {

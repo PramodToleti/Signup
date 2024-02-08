@@ -193,7 +193,7 @@ const WeaverPage = () => {
           >
             {(close) => (
               <div className='modal'>
-                <AddDevice />
+                <AddDevice closeModal={close}/>
                 <div className='close-btn'>
                   <button onClick={close}>
                     <IoMdClose size={25} />{" "}
